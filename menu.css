@@ -1,0 +1,347 @@
+* {
+    box-sizing: border-box;
+    position: relative;
+}
+
+body, html {
+    margin: 0;
+    overflow: hidden;
+    transition: opacity .4s;
+}
+
+body, html {
+    display: block;
+}
+
+body, html {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+}
+
+body {
+    font-size: 16px;
+    font-family: "Roboto", arial, "sans-serif";
+    color: #222;
+    line-height: 1.4rem;
+    transform: translate3d(0,0,0);
+    background: rgba(0,0,0, .5);
+    opacity: 1;
+}
+
+.bodywrapper {
+    width: 100%;
+    height: auto;
+    min-height: 100vh;
+    transform: perspective(800px) scale(1, 1) rotateX(0deg);
+    opacity: 1;
+    transition: opacity 1s ease;
+}
+
+.bodywrapper.appear {
+    transform-origin: top center;
+    animation: bodyappear 1s ease;
+}
+
+@keyframes bodyappear{
+    0% {
+        transform: perspective(800px) scale(0.7, 0.7) rotateX(30deg);
+        opacity: 0;
+    }
+    100% {
+        transform: perspective(0) scale(1, 1) rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.container {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 768px) {
+    .container {
+        width: 738px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 992px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        width: 1170px;
+    }
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+    font-size: 0px;
+}
+
+.header__content {
+    background: transparent;
+    padding: 1.4rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header__logo {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+nav {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+ul, ol {
+    list-style-position: inside;
+    margin: 0;
+    padding: 0;
+}
+
+.menu {
+    display: inline-block;
+    vertical-align: middle;
+    z-index: 1000;
+}
+
+.menu__link {
+    font-size: 1rem;
+    color: #fff;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+a, a:hover, a:visited, a:active {
+    text-decoration: none;
+}
+
+.menu__link:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: #fff;
+    bottom: -8px;
+    left: 0;
+    
+}
+
+@keyframes underline {
+    0% {
+        width: 100%;
+        opacity: 1;
+        transform: translateX(0px) scale(1, 1);
+        transform-origin: 100% 50%;
+    }
+    100% {
+        width: 100%;
+        transform: translateX(10px) scale(0, 1);
+        transform-origin: 100% 50%;
+        opacity: 0;
+    }
+}
+
+.menu__link:hover:after {
+    animation: underline 1s;
+}
+
+.menu li {
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 2rem;
+}
+
+.menu li:last-of-type {
+    margin-right: 0;
+}
+
+.menu__button {
+    display: inline-block;
+    margin-left: 1.5rem;
+}
+
+.button {
+    display: block;
+    padding: 0.8rem;
+    text-align: center;
+    font-size: 1rem;
+    background: #fff;
+    color: #222;
+    border: 2px solid #fff;
+    margin: 2rem 0;
+    cursor: pointer;
+    transition: background 0.6s ease;
+    overflow: hidden;
+}
+
+@media (min-width: 768px) {
+    .button {
+        margin: 0.6rem 0;
+        padding: 0.6rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .button {
+        margin: 2rem 0;
+    }
+}
+
+.button.invert {
+    background: #fff;
+    border: none;
+}
+
+.button.inline {
+    margin: 0;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1rem;
+    font-weight: 400;
+    top: -2.7px;
+}
+
+.button span {
+    display: block;
+    text-align: inherit;
+}
+
+.button :first-child {
+    position: relative;
+    text-align: center;
+    -webkit-transform: translateY(0px);
+    transform: translateY(0px);
+    -webkit-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+    opacity: 1;
+}
+
+
+.button.inline span {
+    text-align: center;
+}
+
+.button.invert span {
+    color: #000;
+}
+
+.button.invert:hover span {
+    color: #fff;
+}
+
+
+.button:hover :first-child {
+    transform: translateY(-0.8rem);
+}
+
+.lang {
+    display: block;
+    text-align: right;
+    padding-top: 0.5rem;
+}
+
+.lang a {
+    display: inline-block;
+    vertical-align: baseline;   
+    color: #757575;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.lang .lang__sel {
+    color: #fff;
+}
+
+.lang :first-child::after {
+    content: ' | ';
+    display: inline-block;
+    vertical-align: baseline;
+    font-size: 1rem;
+    color: #fff;
+    margin: 0 0.5rem;
+}
+
+@media (max-width: 767px) {
+    .menu {
+        display: none;
+        text-align: left;
+        width: 100%;
+        padding-left: 2rem;
+    }
+}
+
+.mobile-menu {
+    position: fixed;
+    width: 70%;
+    height: 100vh;
+    padding: 1.5rem;
+    z-index: 9000;
+    top: 0;
+    right: -70%;
+    background: #212020;
+    box-shadow: -220px 0 0 transparent, -18px 0 50px transparent;
+    display: none;
+    transition: all 0.6s cubic-bezier(0.8, 0, 0.2, 1), box-shadow 0.2s ease;
+}
+
+@media (max-width: 767px) {
+    .mobile-menu {
+        display: block;
+    }
+}
+
+.mobile-menu.active {
+    right: 0;
+    box-shadow: -220px 0px 0px rgba(0,0,0,0.5), -18px 0 50px rgba(0,0,0,0.5);
+    transition: all 0.6s cubic-bezier(0.8, 0, 0.2, 1), box-shadow 0.6s 0.3s ease;
+
+}
+
+.mobile-menu__burger {
+    position: absolute;
+    width: 54px;
+    height: 54px;
+    background: url(http://perinnovation.ru/bitrix/templates/peri/img/icons/burger.png) no-repeat center;
+    top: 14px;
+    left: -64px;
+    cursor: pointer;
+    transition: all 0.6s cubic-bezier(0.8, 0, 0.2, 1);
+    z-index: 5;
+}
+
+.mobile-menu.active .mobile-menu__burger {
+    left: 16px;
+    background: url(http://perinnovation.ru/bitrix/templates/peri/img/icons/close-mobile-menu.png) no-repeat center;
+}
+
+.mobile-menu__link {
+    font-size: 25px;
+    color: #fff;
+    line-height: 2.4;
+    font-weight: 100;
+}
+
+
